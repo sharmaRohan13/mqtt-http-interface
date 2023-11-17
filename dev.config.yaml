@@ -1,0 +1,7 @@
+mqtt:
+    broker: mqtt://localhost:1883
+    client_id: mqtt-http-interface
+    username: username
+    password: password
+http:
+    server: localhost:8080
