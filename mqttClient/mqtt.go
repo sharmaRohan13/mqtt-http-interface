@@ -56,11 +56,13 @@ func ConnectMqtt(broker string, clientId string, username string, password strin
 
 func (m *Client) Connect() {
 	go func() {
-		if token := m.client.Connect(); token.Wait() && token.Error() != nil {
+		token := m.client.Connect()
+		token.Wait()
+		if token.Error() != nil {
 			log.Fatal(token.Error())
 		}
+		fmt.Printf("MQTT Connected \n")
 	}()
-	fmt.Printf("MQTT Connected \n")
 }
 
 func (m *Client) Publish(topic string, payload []byte, qos byte) error {
